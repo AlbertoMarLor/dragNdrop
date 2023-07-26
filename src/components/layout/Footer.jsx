@@ -2,7 +2,7 @@ import React from 'react'
 import { useDrop } from 'react-dnd'
 
 
-export const Footer = ({ text, setText, moveText, paragraph, setParagraph, border, setBorder, height, setHeight }) => {
+export const Footer = ({ text, setText, moveText, paragraph, setParagraph, border, setBorder }) => {
 
     const [, drop] = useDrop(
         () => ({

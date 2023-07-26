@@ -10,6 +10,8 @@ import { DraggableImage } from '../helpers/DraggableImage'
 
 export const Aside = ({ image, setImage, moveImage, text, setText, moveText }) => {
 
+
+
     const [, drop] = useDrop(
         () => ({
             accept: ['image', 'text'],
@@ -36,10 +38,10 @@ export const Aside = ({ image, setImage, moveImage, text, setText, moveText }) =
                         <p>Text</p>
                     </div>
                     {Object.keys(text).map((key) => {
-                        const { left, top, title } = text[key]
+                        const { left, top } = text[key]
                         return (
                             <DraggableText key={key} id={key} left={left} top={top}>
-                                {title}
+                                <textarea rows="10" cols="50" type="text" placeholder='Place me on the body or the on footer, then write something' />
                             </DraggableText>
                         )
                     })}

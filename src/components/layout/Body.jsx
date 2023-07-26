@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDrop } from 'react-dnd'
 
-export const Body = ({ moveImage, moveText, paragraph, setParagraph, border, setBorder, height, setHeight }) => {
+export const Body = ({ moveImage, moveText, paragraph, setParagraph, border, setBorder }) => {
 
     const [, drop] = useDrop(
         () => ({

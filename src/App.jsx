@@ -1,4 +1,3 @@
-import './App.css'
 import update from 'immutability-helper'
 import { Aside } from './components/layout/Aside'
 
@@ -23,6 +22,12 @@ function App() {
     e: { top: 100, left: 40, title: 'buenas, soy otro texto', type: 'text' },
     f: { top: 140, left: 40, title: 'que tal, soy el ultimo texto', type: 'text' },
   })
+
+  const [paragraph, setParagraph] = useState(true)
+
+  const [border, setBorder] = useState({ border: '1px dashed rgb(34, 106, 173)' })
+
+  const [height, setHeight] = useState({ minHeight: '280px' })
 
   const moveImage = useCallback(
     (id, left, top) => {
@@ -56,9 +61,9 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className='page'>
         <div className='layout'>
-          <Header image={image} setImage={setImage} moveImage={moveImage} />
-          <Body image={image} setImage={setImage} moveImage={moveImage} text={text} setText={setText} moveText={moveText} />
-          <Footer text={text} setText={setText} moveText={moveText} />
+          <Header image={image} setImage={setImage} moveImage={moveImage} paragraph={paragraph} setParagraph={setParagraph} border={border} setBorder={setBorder} height={height} setHeight={setHeight} />
+          <Body image={image} setImage={setImage} moveImage={moveImage} text={text} setText={setText} moveText={moveText} paragraph={paragraph} setParagraph={setParagraph} border={border} setBorder={setBorder} height={height} setHeight={setHeight} />
+          <Footer text={text} setText={setText} moveText={moveText} paragraph={paragraph} setParagraph={setParagraph} border={border} setBorder={setBorder} height={height} setHeight={setHeight} />
         </div>
         <Aside image={image} setImage={setImage} moveImage={moveImage} text={text} setText={setText} moveText={moveText} />
       </div>

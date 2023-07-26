@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
 
-export const Header = ({ image, setImage, moveImage }) => {
+
+export const Header = ({ image, setImage, moveImage, paragraph, setParagraph, border, setBorder }) => {
+
+
 
     const [, drop] = useDrop(
         () => ({
@@ -11,6 +14,8 @@ export const Header = ({ image, setImage, moveImage }) => {
                 const left = Math.round(item.left + delta.x)
                 const top = Math.round(item.top + delta.y)
                 moveImage(item.id, left, top)
+                setParagraph(false)
+                setBorder({ border: 'none' })
                 return undefined
             },
         }),
@@ -22,9 +27,9 @@ export const Header = ({ image, setImage, moveImage }) => {
             <div className="area-name">
                 <h2>Header</h2>
             </div>
-            <div className="area" ref={drop}>
-                <p>Drag and drop an element within this area.</p>
+            <div style={border} className="area" ref={drop}>
+                {paragraph && <p>Drag and drop an element within this area.</p>}
             </div>
-        </section>
+        </section >
     )
 }

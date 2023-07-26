@@ -10,7 +10,7 @@
 section {
     background: #f7f7f1;
     padding: 10px 5px 7px 2px;
-    margin: 30px 0;
+
 }
 
 section.aside {
@@ -43,11 +43,10 @@ section h2.elements {
 
 .area {
     width: 99%;
-    min-height: 150px;
+    min-height: 280px;
     margin: 0 auto;
     background-color: white;
-    border: 1px dashed rgb(34, 106, 173);
-    line-height: 150px;
+    line-height: 220px;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
@@ -67,7 +66,8 @@ div.elements {
 
 
 section p {
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
     font-size: 16px;
     font-family: sans-serif;
     font-weight: bold;

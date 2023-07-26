@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDrop } from 'react-dnd'
 
-export const Body = ({ moveImage, moveText }) => {
+export const Body = ({ moveImage, moveText, paragraph, setParagraph, border, setBorder, height, setHeight }) => {
 
     const [, drop] = useDrop(
         () => ({
@@ -14,8 +14,12 @@ export const Body = ({ moveImage, moveText }) => {
                 const top = Math.round(item.top + delta.y)
                 if (item.type === 'image') {
                     moveImage(item.id, left, top)
+                    setParagraph(false)
+                    setBorder({ border: 'none' })
                 } else {
                     moveText(item.id, left, top)
+                    setParagraph(false)
+                    setBorder({ border: 'none' })
                 }
                 return undefined
             },
@@ -28,8 +32,8 @@ export const Body = ({ moveImage, moveText }) => {
             <div className="area-name">
                 <h2>Body</h2>
             </div>
-            <div ref={drop} className="area">
-                <p>Drag and drop an element within this area.</p>
+            <div style={border} ref={drop} className="area">
+                {paragraph && <p>Drag and drop an element within this area.</p>}
             </div>
         </section>
     )

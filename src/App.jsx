@@ -11,22 +11,22 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 function App() {
 
   const [image, setImage] = useState({
-    a: { top: 0, left: 80, src: '/images/arrow.png' },
+    a: { top: 40, left: 80, src: '/images/arrow.png' },
     b: { top: 40, left: 300, src: '/images/pdf.png' },
-    c: { top: 120, left: 40, src: '/images/ubi.png' },
-
+    c: { top: 200, left: 70, src: '/images/ubi.png' },
+    d: { top: 250, left: 300, src: '/images/javascript.png' }
   })
 
   const [text, setText] = useState({
-    d: { top: 60, left: 40 },
-    e: { top: 100, left: 40 },
-    f: { top: 140, left: 40 },
+    e: { top: 60, left: 40 },
+    f: { top: 100, left: 40 },
+    g: { top: 140, left: 40 },
   })
 
   const [table, setTable] = useState({
-    g: { top: 100, left: 40 },
-    h: { top: 200, left: 40 },
-    i: { top: 300, left: 40 }
+    h: { top: 100, left: 40 },
+    i: { top: 200, left: 40 },
+    j: { top: 300, left: 40 }
   })
 
   const [paragraph, setParagraph] = useState(true)

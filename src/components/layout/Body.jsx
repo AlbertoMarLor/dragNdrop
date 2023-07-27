@@ -3,23 +3,25 @@ import { useDrop } from 'react-dnd'
 
 export const Body = ({ moveImage, moveText, paragraph, setParagraph, border, setBorder }) => {
 
+    const styles = () => {
+        setParagraph(false)
+        setBorder({ border: 'none' })
+    }
+
     const [, drop] = useDrop(
         () => ({
             accept: ['image', 'text'],
             drop(item, monitor) {
-
 
                 const delta = monitor.getDifferenceFromInitialOffset()
                 const left = Math.round(item.left + delta.x)
                 const top = Math.round(item.top + delta.y)
                 if (item.type === 'image') {
                     moveImage(item.id, left, top)
-                    setParagraph(false)
-                    setBorder({ border: 'none' })
+                    styles()
                 } else {
                     moveText(item.id, left, top)
-                    setParagraph(false)
-                    setBorder({ border: 'none' })
+                    styles()
                 }
                 return undefined
             },

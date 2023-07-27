@@ -7,8 +7,6 @@ import { DraggableImage } from '../helpers/DraggableImage'
 
 export const Aside = ({ image, moveImage, text, moveText }) => {
 
-
-
     const [, drop] = useDrop(
         () => ({
             accept: ['image', 'text'],

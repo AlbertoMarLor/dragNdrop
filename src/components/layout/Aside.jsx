@@ -1,14 +1,11 @@
-import React, { useRef, useState } from 'react'
-import { PiTextAlignJustifyBold } from "react-icons/pi"
-import { FaRegImage } from "react-icons/fa"
-import { BiTable } from "react-icons/bi"
+import React from 'react'
 import { useDrop } from 'react-dnd'
 import { DraggableText } from '../helpers/DraggableText '
 import { DraggableImage } from '../helpers/DraggableImage'
 
+//TODO refactorizar 
 
-
-export const Aside = ({ image, setImage, moveImage, text, setText, moveText }) => {
+export const Aside = ({ image, moveImage, text, moveText }) => {
 
 
 
@@ -48,7 +45,7 @@ export const Aside = ({ image, setImage, moveImage, text, setText, moveText }) =
                 </div>
                 <div ref={drop} className="elements">
                     <div className="element"  >
-                        {/* <input type="file" accept='image/*' ref={inputFileRef} onChange={onFileChange} style={{ display: 'none' }} /> */}
+
 
                         <p>Image</p>
                         {Object.keys(image).map((key) => {

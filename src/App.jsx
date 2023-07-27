@@ -61,11 +61,32 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className='page'>
         <div className='layout'>
-          <Header image={image} setImage={setImage} moveImage={moveImage} paragraph={paragraph} setParagraph={setParagraph} border={border} setBorder={setBorder} />
-          <Body image={image} setImage={setImage} moveImage={moveImage} text={text} setText={setText} moveText={moveText} paragraph={paragraph} setParagraph={setParagraph} border={border} setBorder={setBorder} />
-          <Footer text={text} setText={setText} moveText={moveText} paragraph={paragraph} setParagraph={setParagraph} border={border} setBorder={setBorder} />
+          <Header
+            moveImage={moveImage}
+            paragraph={paragraph}
+            setParagraph={setParagraph}
+            border={border}
+            setBorder={setBorder} />
+
+          <Body moveImage={moveImage}
+            moveText={moveText}
+            paragraph={paragraph}
+            setParagraph={setParagraph}
+            border={border}
+            setBorder={setBorder} />
+
+          <Footer moveText={moveText}
+            paragraph={paragraph}
+            setParagraph={setParagraph}
+            border={border}
+            setBorder={setBorder} />
         </div>
-        <Aside image={image} setImage={setImage} moveImage={moveImage} text={text} setText={setText} moveText={moveText} />
+
+        <Aside
+          image={image}
+          moveImage={moveImage}
+          text={text}
+          moveText={moveText} />
       </div>
     </DndProvider>
   )

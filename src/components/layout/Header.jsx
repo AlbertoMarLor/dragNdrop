@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDrop } from 'react-dnd'
 
 
-export const Header = ({ image, setImage, moveImage, paragraph, setParagraph, border, setBorder }) => {
+export const Header = ({ moveImage, paragraph, setParagraph, border, setBorder }) => {
 
 
 

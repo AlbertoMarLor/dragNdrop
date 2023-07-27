@@ -4,7 +4,10 @@ import { useDrop } from 'react-dnd'
 
 export const Header = ({ moveImage, paragraph, setParagraph, border, setBorder }) => {
 
-
+    const styles = () => {
+        setParagraph(false)
+        setBorder({ border: 'none' })
+    }
 
     const [, drop] = useDrop(
         () => ({
@@ -14,8 +17,7 @@ export const Header = ({ moveImage, paragraph, setParagraph, border, setBorder }
                 const left = Math.round(item.left + delta.x)
                 const top = Math.round(item.top + delta.y)
                 moveImage(item.id, left, top)
-                setParagraph(false)
-                setBorder({ border: 'none' })
+                styles()
                 return undefined
             },
         }),

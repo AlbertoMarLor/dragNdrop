@@ -4,6 +4,11 @@ import { useDrop } from 'react-dnd'
 
 export const Footer = ({ moveText, paragraph, setParagraph, border, setBorder }) => {
 
+    const styles = () => {
+        setParagraph(false)
+        setBorder({ border: 'none' })
+    }
+
     const [, drop] = useDrop(
         () => ({
             accept: 'text',
@@ -12,8 +17,7 @@ export const Footer = ({ moveText, paragraph, setParagraph, border, setBorder })
                 const left = Math.round(item.left + delta.x)
                 const top = Math.round(item.top + delta.y)
                 moveText(item.id, left, top)
-                setParagraph(false)
-                setBorder({ border: 'none' })
+                styles()
                 return undefined
             },
         }),

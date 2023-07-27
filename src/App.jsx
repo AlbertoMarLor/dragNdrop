@@ -23,6 +23,12 @@ function App() {
     f: { top: 140, left: 40 },
   })
 
+  const [table, setTable] = useState({
+    g: { top: 100, left: 40 },
+    h: { top: 200, left: 40 },
+    i: { top: 300, left: 40 }
+  })
+
   const [paragraph, setParagraph] = useState(true)
 
   const [border, setBorder] = useState({ border: '1px dashed rgb(34, 106, 173)' })
@@ -55,7 +61,18 @@ function App() {
     [text, setText],
   )
 
-
+  const moveTable = useCallback(
+    (id, left, top) => {
+      setTable(
+        update(table, {
+          [id]: {
+            $merge: { left, top },
+          },
+        }),
+      )
+    },
+    [table, setTable],
+  )
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -70,10 +87,12 @@ function App() {
 
           <Body moveImage={moveImage}
             moveText={moveText}
+            moveTable={moveTable}
             paragraph={paragraph}
             setParagraph={setParagraph}
             border={border}
-            setBorder={setBorder} />
+            setBorder={setBorder}
+          />
 
           <Footer moveText={moveText}
             paragraph={paragraph}
@@ -86,7 +105,9 @@ function App() {
           image={image}
           moveImage={moveImage}
           text={text}
-          moveText={moveText} />
+          moveText={moveText}
+          table={table}
+          moveTable={moveTable} />
       </div>
     </DndProvider>
   )

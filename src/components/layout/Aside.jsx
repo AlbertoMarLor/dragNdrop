@@ -2,10 +2,11 @@ import React from 'react'
 import { useDrop } from 'react-dnd'
 import { DraggableText } from '../helpers/DraggableText '
 import { DraggableImage } from '../helpers/DraggableImage'
+import { DraggableTable } from '../helpers/DraggableTable'
 
 //TODO refactorizar 
 
-export const Aside = ({ image, moveImage, text, moveText }) => {
+export const Aside = ({ image, moveImage, text, moveText, table, moveTable }) => {
 
     const [, drop] = useDrop(
         () => ({
@@ -14,7 +15,11 @@ export const Aside = ({ image, moveImage, text, moveText }) => {
                 const delta = monitor.getDifferenceFromInitialOffset()
                 const left = Math.round(item.left + delta.x)
                 const top = Math.round(item.top + delta.y)
-                    (item.type === 'image') ? moveImage(item.id, left, top) : moveText(item.id, left, top)
+                if (item.type === 'image') {
+                    moveImage(item.id, left, top)
+                } else if (item.type === 'text') {
+                    moveText(item.id, left, top)
+                } else { moveTable(item.id, left, top) }
                 return undefined
             },
         }),
@@ -56,7 +61,39 @@ export const Aside = ({ image, moveImage, text, moveText }) => {
                         })}
                     </div>
                 </div>
+                <div ref={drop} className="elements">
+                    <div className="element"  >
+                        <p>Table</p>
+                        {Object.keys(table).map((key) => {
+                            const { left, top } = table[key]
+                            return (
+                                <DraggableTable key={key} id={key} left={left} top={top}>
+                                    <table border="1">
 
+                                        <tbody>
+                                            <tr>
+                                                <td contentEditable='true'>Drag me to the body, then write something</td>
+                                                <td contentEditable='true'></td>
+                                                <td contentEditable='true'></td>
+                                            </tr>
+                                            <tr>
+                                                <td contentEditable='true'></td>
+                                                <td contentEditable='true'></td>
+                                                <td contentEditable='true'></td>
+                                            </tr>
+                                            <tr>
+                                                <td contentEditable='true'></td>
+                                                <td contentEditable='true'></td>
+                                                <td contentEditable='true'></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </DraggableTable>
+                            )
+                        })}
+
+                    </div>
+                </div>
             </div>
 
         </section>

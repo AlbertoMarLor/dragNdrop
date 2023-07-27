@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDrop } from 'react-dnd'
 
-export const Body = ({ moveImage, moveText, paragraph, setParagraph, border, setBorder }) => {
+export const Body = ({ moveImage, moveText, moveTable, paragraph, setParagraph, border, setBorder }) => {
 
     const styles = () => {
         setParagraph(false)
@@ -10,7 +10,7 @@ export const Body = ({ moveImage, moveText, paragraph, setParagraph, border, set
 
     const [, drop] = useDrop(
         () => ({
-            accept: ['image', 'text'],
+            accept: ['image', 'text', 'table'],
             drop(item, monitor) {
 
                 const delta = monitor.getDifferenceFromInitialOffset()
@@ -19,14 +19,17 @@ export const Body = ({ moveImage, moveText, paragraph, setParagraph, border, set
                 if (item.type === 'image') {
                     moveImage(item.id, left, top)
                     styles()
-                } else {
+                } else if (item.type === 'text') {
                     moveText(item.id, left, top)
+                    styles()
+                } else {
+                    moveTable(item.id, left, top)
                     styles()
                 }
                 return undefined
             },
         }),
-        [moveText, moveImage],
+        [moveText, moveImage, moveTable],
     )
 
     return (
